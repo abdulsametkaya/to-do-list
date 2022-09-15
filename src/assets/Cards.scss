@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  border: 1.5px solid rgb(152, 152, 152);
+  box-shadow: 2px 3px 0.2rem rgba(0, 0, 0, 0.5);
+  margin: 1.2rem;
+  height: 12rem;
+  width: 18rem;
+  border-radius: 20px;
+  padding: 5px;
+  padding-left: 8px;
+  display: inline-block;
+  overflow: scroll;
+  background-color: beige;
+
+  .cardBody {
+    overflow: scroll;
+  }
+
+  .title {
+    background-color: rgb(243, 243, 165);
+    border-radius: 20px;
+    display: flex;
+    height: 3rem;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      margin-left: 5px;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: rgb(67, 67, 7);
+    }
+
+    ol {
+      display: flex;
+      margin: 0;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      margin-right: 0.4rem;
+    }
+
+    li {
+      list-style: none;
+      display: inline;
+    }
+
+    a {
+      color: black;
+    }
+  }
+
+  .date {
+    text-align: right;
+    padding-right: 10px;
+  }
+}
