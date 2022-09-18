@@ -1,16 +1,18 @@
 import React from "react";
-import { AiOutlinePlus } from "../../node_modules/react-icons/ai";
 import "../assets/Header.scss";
+import Forms from "./Forms";
 
-const Header = () => {
+const Header = (props) => {
+  const { handleCreateDuty } = props;
+
   return (
     <div className="header">
-      <div className="container">
+      <div className="header-todo">
         <div href="#">Just Do It</div>
         <div>
-          <a className="plus" href="#">
-            <AiOutlinePlus size={"2.5rem"} />
-          </a>
+          <div>
+            <Forms handleCreateDuty={handleCreateDuty} />
+          </div>
         </div>
       </div>
     </div>
