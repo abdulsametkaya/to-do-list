@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { createDuty, deleteDuty, getDuty } from "./Api";
+import React from "react";
 import Cards from "./Cards";
 import "../assets/Cardlist.scss";
 
 const CardList = (props) => {
-  const { duties, handleDeleteDuty } = props;
+  const { duties, handleDeleteDuty, handleEditDuty } = props;
 
   return (
-    <Container>
-      {duties.map((duty) => (
-        <Col className="col" key={duty.id}>
-          <Cards {...duty} handleDeleteDuty={handleDeleteDuty} />
-        </Col>
-      ))}
-    </Container>
+    <div className="cardlist">
+      <div className="cont">
+        {duties.map((duty) => (
+          <Cards
+            {...duty}
+            key={duty.id}
+            handleDeleteDuty={handleDeleteDuty}
+            handleEditDuty={handleEditDuty}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 

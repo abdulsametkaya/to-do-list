@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, FormLabel } from "react-bootstrap";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { AiOutlinePlus } from "../../node_modules/react-icons/ai";
 import "../assets/Forms.scss";
@@ -13,31 +13,41 @@ function Forms(props) {
   const formDate = useRef();
   const formDescription = useRef();
 
+  const handleToggle = () => {
+    toggle();
+  };
+
   const createDuty = () => {
     const description = formDescription.current.value;
     const deadline = formDate.current.value;
     handleCreateDuty(description, deadline);
-    toggle();
+    handleToggle();
     console.log(formDate.current.value);
   };
 
   return (
     <div className="form">
-      <AiOutlinePlus size={"2.5rem"} onClick={toggle} />
+      <AiOutlinePlus size={"2.5rem"} onClick={handleToggle} />
 
-      <Modal isOpen={modal} toggle={toggle} {...args}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+      <Modal isOpen={modal} toggle={handleToggle} {...args}>
+        <ModalHeader toggle={handleToggle}>Just Do It</ModalHeader>
         <ModalBody>
           <Form>
-            <input ref={formDate} type={"date"} />
-            <input ref={formDescription} type="text" />
+            <div>
+              <label for="date">Deadline :</label>
+              <input ref={formDate} type={"date"} id={"date"} />
+            </div>
+            <div>
+              <label for="context">Context :</label>
+              <input ref={formDescription} type="text" id={"context"} />
+            </div>
           </Form>
         </ModalBody>
         <ModalFooter>
           <Button color="success" onClick={createDuty}>
             Save
           </Button>
-          <Button color="danger" onClick={toggle}>
+          <Button color="danger" onClick={handleToggle}>
             Cancel
           </Button>
         </ModalFooter>

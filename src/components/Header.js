@@ -3,7 +3,7 @@ import "../assets/Header.scss";
 import Forms from "./Forms";
 
 const Header = (props) => {
-  const { handleCreateDuty } = props;
+  const { handleCreateDuty, clickForm } = props;
 
   return (
     <div className="header">
