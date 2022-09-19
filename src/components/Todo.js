@@ -26,9 +26,17 @@ export const Todo = () => {
     setDuties([resp.data, ...duties]);
   };
 
-  const handleEditDuty = async (id) => {
-    const arr = duties.filter((duty) => duty.id === id);
-    return arr;
+  const handleEditDuty = async (id, description, deadline) => {
+    const payload = {
+      id: id,
+      description: description,
+      deadline: deadline,
+    };
+
+    const resp = await updateDuty(payload);
+    const arr = duties.filter((duty) => duty.id !== resp.data.id);
+
+    setDuties([resp.data, ...arr]);
   };
 
   useEffect(() => {

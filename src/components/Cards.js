@@ -15,12 +15,22 @@ import { IoCheckmarkDoneCircle } from "../../node_modules/react-icons/io5";
 const Cards = (props, args) => {
   const { id, handleDeleteDuty, deadline, description, handleEditDuty } = props;
 
+  const [addClass, setAddClass] = useState(false);
+
   const deleteCard = () => {
     handleDeleteDuty(id);
   };
 
   const editCard = () => {
-    const arr = handleEditDuty(id);
+    const description = formDescription.current.value;
+    const deadline = formDate.current.value;
+
+    handleEditDuty(id, description, deadline);
+    toggle();
+  };
+
+  const addDone = () => {
+    setAddClass(!addClass);
   };
 
   const [modal, setModal] = useState(false);
@@ -36,16 +46,17 @@ const Cards = (props, args) => {
 
   return (
     <Card>
+      <div className={addClass ? "done" : ""}></div>
       <Card.Header className="title">
         <span>DUTY {id}</span>
         <ol>
           <li>
-            <a>
+            <a onClick={addDone}>
               <IoCheckmarkDoneCircle size={"1.3rem"} color={"green"} />
             </a>
           </li>
           <li>
-            <a onClick={editCard}>
+            <a onClick={handleToggle}>
               <BiPencil size={"1.3rem"} color={"black"} />
             </a>
             <div className="form">
@@ -54,12 +65,22 @@ const Cards = (props, args) => {
                 <ModalBody>
                   <Form>
                     <div>
-                      <label for="date">Deadline :</label>
-                      <input ref={formDate} type={"date"} id={"date"} />
+                      <label htmlFor="date">Deadline :</label>
+                      <input
+                        ref={formDate}
+                        defaultValue={deadline}
+                        type={"date"}
+                        id={"date"}
+                      />
                     </div>
                     <div>
-                      <label for="context">Context :</label>
-                      <input ref={formDescription} type="text" id={"context"} />
+                      <label htmlFor="context">Context :</label>
+                      <input
+                        ref={formDescription}
+                        defaultValue={description}
+                        type="text"
+                        id={"context"}
+                      />
                     </div>
                   </Form>
                 </ModalBody>
